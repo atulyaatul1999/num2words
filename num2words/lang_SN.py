@@ -201,11 +201,11 @@ class Num2Word_SN(Num2Word_Base):
     def to_cardinal_float(self, value):
         """Convert a float to its Shona word representation."""
         try:
-            float(value) == value
-        except (ValueError, TypeError, AssertionError, AttributeError):
+            value = float(value)
+        except (ValueError, TypeError, AttributeError):
             raise TypeError(self.errmsg_nonnum % value)
 
-        pre, post = self.float2tuple(float(value))
+        pre, post = self.float2tuple(value)
         post = str(post)
         post = '0' * (self.precision - len(post)) + post
 
